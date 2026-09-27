@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <title>Jackie & Larkin · October 2, 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +59,8 @@ nav{
   max-width:1040px; margin:0 auto; padding:.8rem 1.25rem;
   display:flex; align-items:center; gap:1.5rem; overflow-x:auto; white-space:nowrap;
 }
-.monogram{font-family:var(--serif); font-size:1.25rem; text-decoration:none; color:var(--ink); margin-right:auto}
+.monogram{display:flex; align-items:center; margin-right:auto; margin-block:-.35rem}
+.monogram img{display:block; width:44px; height:44px}
 .nav-inner a:not(.monogram):not(.btn){color:var(--ink); text-decoration:none; font-size:.95rem}
 .nav-inner a:not(.monogram):not(.btn):hover{color:var(--river)}
 
@@ -94,13 +97,27 @@ nav{
 .hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:2rem}
 
 /* ---------- Sections ---------- */
+/* Sections: open layout, generous space, a centered ornament between them */
+main{padding-bottom:clamp(1rem,4vw,2rem)}
 section{
-  max-width:1040px; margin:0 auto; padding:clamp(3rem,8vw,5rem) 1.25rem;
-  border-top:1px solid var(--mist);
+  position:relative;
+  max-width:1040px; margin:0 auto;
+  padding:clamp(4rem,10vw,6.5rem) 1.25rem;
   display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem;
 }
+/* hairline across the gap, broken by the three-color mark */
+section + section::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:min(280px, 60%); height:1px; background:var(--mist);
+}
+section + section::after{
+  content:""; position:absolute; top:-3px; left:50%; transform:translateX(-50%);
+  width:42px; height:7px; border-radius:4px;
+  background:linear-gradient(90deg, var(--river) 0 33.3%, var(--oxblood) 33.3% 66.6%, var(--saffron) 66.6% 100%);
+  box-shadow:0 0 0 12px var(--pearl);
+}
 @media (min-width:820px){
-  section{grid-template-columns:260px minmax(0,1fr); gap:3rem}
+  section{grid-template-columns:240px minmax(0,1fr); gap:3rem}
 }
 h2{font-family:var(--serif); font-weight:400; font-size:clamp(2rem,4.5vw,2.8rem); line-height:1.05; margin:0}
 h3{font-family:var(--serif); font-weight:500; font-size:1.3rem; margin:0 0 .35rem}
@@ -167,7 +184,7 @@ details p{margin:.6rem 0 0; max-width:62ch}
 .cats .cat-name{display:block; font-family:var(--serif); font-size:1.35rem; color:var(--river)}
 .cats .cat-note{color:var(--muted); font-size:.95rem}
 
-footer{max-width:1040px; margin:0 auto; padding:3rem 1.25rem 4rem; border-top:1px solid var(--mist); color:var(--muted); font-size:.9rem}
+footer{max-width:1040px; margin:0 auto; padding:1rem 1.25rem 4rem; text-align:center; color:var(--muted); font-size:.9rem}
 footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); display:block; margin-bottom:.4rem}
 </style>
 </head>
@@ -175,7 +192,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 
 <nav aria-label="Sections">
   <div class="nav-inner">
-    <a class="monogram" href="#top">J &amp; L</a>
+    <a class="monogram" href="#top" aria-label="Jackie and Larkin, back to top"><img src="logo-mark.svg" alt="" width="44" height="44"></a>
     <a href="#weekend">The weekend</a>
     <a href="#getting-here">Getting here</a>
     <a href="#stay">Where to stay</a>
