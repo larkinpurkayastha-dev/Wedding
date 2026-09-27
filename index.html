@@ -26,16 +26,6 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --pearl:#1E0F12; --paper:#2A161B; --ink:#F5EAEA; --river:#D5A4DC;
-    --saffron:#F28A55; --oxblood:#EC7C8C; --mist:#45282F; --muted:#BFA2A8;
-  }
-}
-:root[data-theme="dark"]{
-  --pearl:#1E0F12; --paper:#2A161B; --ink:#F5EAEA; --river:#D5A4DC;
-  --saffron:#F28A55; --oxblood:#EC7C8C; --mist:#45282F; --muted:#BFA2A8;
-}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
@@ -105,16 +95,9 @@ section{
   padding:clamp(4rem,10vw,6.5rem) 1.25rem;
   display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem;
 }
-/* hairline across the gap, broken by the three-color mark */
 section + section::before{
   content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
-  width:min(280px, 60%); height:1px; background:var(--mist);
-}
-section + section::after{
-  content:""; position:absolute; top:-3px; left:50%; transform:translateX(-50%);
-  width:42px; height:7px; border-radius:4px;
-  background:linear-gradient(90deg, var(--river) 0 33.3%, var(--oxblood) 33.3% 66.6%, var(--saffron) 66.6% 100%);
-  box-shadow:0 0 0 12px var(--pearl);
+  width:min(320px, 60%); height:1px; background:var(--mist);
 }
 @media (min-width:820px){
   section{grid-template-columns:240px minmax(0,1fr); gap:3rem}
@@ -186,9 +169,87 @@ details p{margin:.6rem 0 0; max-width:62ch}
 
 footer{max-width:1040px; margin:0 auto; padding:1rem 1.25rem 4rem; text-align:center; color:var(--muted); font-size:.9rem}
 footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); display:block; margin-bottom:.4rem}
+
+/* ---------- Section heads ---------- */
+.head{display:flex; flex-direction:column; gap:.6rem}
+.intro{margin:0; font-family:var(--serif); font-style:italic; font-size:1.2rem; line-height:1.4; color:var(--river)}
+@media (min-width:820px){ .head{position:sticky; top:6rem; align-self:start} }
+
+/* Weekend: a connected timeline */
+.days{list-style:none; margin:0; padding:0; position:relative}
+.days::before{content:""; position:absolute; left:7px; top:.6rem; bottom:.6rem; width:1px; background:var(--mist)}
+.days li{position:relative; padding:0 0 2.25rem 2.5rem}
+.days li:last-child{padding-bottom:0}
+.days .dot{position:absolute; left:0; top:.45rem; width:15px; height:15px; border-radius:50%; background:var(--pearl); border:2px solid var(--river)}
+.days li:nth-child(2) .dot{border-color:var(--oxblood); background:var(--oxblood)}
+.days li:nth-child(3) .dot{border-color:var(--saffron)}
+.when{font-size:.9rem; color:var(--muted)}
+.days h3{font-size:1.45rem; margin:.1rem 0 .3rem}
+.days p{margin:.2rem 0 0}
+.feature{background:var(--paper); border:1px solid var(--mist); border-radius:8px; padding:1.25rem 1.4rem; margin-top:.75rem}
+.feature ul{margin:.5rem 0 0; padding-left:1.1rem}
+.feature li{padding:0; margin:.2rem 0}
+
+/* Cats: snapshots */
+.cats{gap:2rem; max-width:620px}
+.cats figure{background:#fff; padding:.75rem .75rem 1rem; border-radius:3px; box-shadow:0 1px 2px rgba(74,22,34,.12), 0 8px 24px rgba(74,22,34,.08)}
+.cats figure:first-child{transform:rotate(-2deg)}
+.cats figure:last-child{transform:rotate(1.6deg); margin-top:1.25rem}
+.cats img{border-radius:2px}
+.cats figcaption{text-align:center}
+.cats .cat-note{font-family:var(--serif); font-style:italic; color:#7A4A55}
+.cats .cat-name{color:#6E2A6E}
+
+/* Getting here */
+.address{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; background:var(--paper); border:1px solid var(--mist); border-radius:8px; padding:1.25rem 1.4rem}
+.address strong{font-family:var(--serif); font-weight:500; font-size:1.25rem; display:block}
+.address span{color:var(--muted); font-size:.95rem}
+.ways{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.75rem 2.25rem; margin-top:2rem}
+.ways h3{display:flex; align-items:center; gap:.5rem}
+.ways p{margin:.3rem 0 0; color:var(--ink)}
+.ways .small{color:var(--muted); font-size:.95rem}
+.airports{list-style:none; padding:0; margin:.4rem 0 0}
+.airports li{display:flex; justify-content:space-between; gap:1rem; padding:.35rem 0; border-bottom:1px dotted var(--mist)}
+.airports span{color:var(--muted)}
+
+/* Stay */
+.stay{padding:1.75rem; border-top:4px solid var(--oxblood)}
+.perks{list-style:none; padding:0; margin:1rem 0 1.25rem; display:grid; gap:.5rem}
+.perks li{padding-left:1.4rem; position:relative}
+.perks li::before{content:""; position:absolute; left:0; top:.6em; width:8px; height:8px; border-radius:50%; background:var(--saffron)}
+
+/* Eat & explore */
+.spots{list-style:none; padding:0; margin:1rem 0 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem}
+.spots li{background:var(--paper); border:1px solid var(--mist); border-radius:8px; padding:1rem 1.1rem}
+.spots strong{font-family:var(--serif); font-weight:500; font-size:1.15rem; display:block}
+.spots p{margin:.25rem 0 0; font-size:.97rem}
+.tag{display:inline-block; margin-top:.6rem; font-size:.78rem; padding:.15rem .55rem; border-radius:999px; background:color-mix(in srgb, var(--river) 12%, transparent); color:var(--river)}
+.tag.drink{background:color-mix(in srgb, var(--oxblood) 12%, transparent); color:var(--oxblood)}
+.tag.eat{background:color-mix(in srgb, var(--saffron) 16%, transparent); color:#9A4214}
+.spots li.ours{border-style:dashed}
+
+/* RSVP */
+.rsvp-card{text-align:center; background:var(--paper); border:1px solid var(--mist); border-radius:8px; padding:2.25rem 1.5rem}
+.rsvp-card img{width:84px; height:84px; display:block; margin:0 auto .75rem}
+.rsvp-card .lede{margin:0 auto; max-width:40ch}
+.rsvp-card .btn{margin:1.25rem .25rem 0}
+@media (prefers-reduced-motion: reduce){ .cats figure{transform:none !important} }
+
+.map-wrap{margin:1.5rem 0 0; border:1px solid var(--mist); border-radius:8px; overflow:hidden; background:var(--paper)}
+.nyc-map{display:block; width:100%; height:auto}
+.map-wrap figcaption{display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; padding:.85rem 1.1rem; font-size:.9rem; color:var(--muted); border-top:1px solid var(--mist)}
+.map-wrap .k{display:inline-block; width:12px; height:12px; margin-right:.45rem; vertical-align:-1px}
+.k.star-boro,.k.star-lga{clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.k.star-boro{background:#A3243A}.k.star-lga{background:#E0662A}
+.k.spot{border-radius:50%; background:#6E2A6E; width:10px; height:10px}
+.k.ln{width:18px; height:5px; border-radius:3px; vertical-align:2px}
+.map-note{color:var(--muted); font-size:.95rem; margin:.75rem 0 0}
+
+.band{height:30px; background:url("band.svg") repeat-x left center / auto 30px}
 </style>
 </head>
 <body>
+<div class="band" aria-hidden="true"></div>
 
 <nav aria-label="Sections">
   <div class="nav-inner">
@@ -218,28 +279,39 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 
 <main>
 <section id="weekend">
-  <h2>The weekend</h2>
+  <div class="head"><h2>The weekend</h2><p class="intro">Three days, one very good dinner.</p></div>
   <div class="body">
-    <p class="lede">We're getting married at the BORO Hotel in Long Island City, right across the river from Midtown. The night is built around food: generous stations instead of a plated dinner, so come hungry and graze all evening.</p>
-    <ol class="timeline">
-      <li>
-        <div class="day">Friday<span>October 1</span></div>
-        <div><h3>Welcome drinks</h3><p><span class="tbd">Time and place to come.</span> Casual and optional, a chance to say hi before the big day.</p></div>
+    <p class="lede">We're getting married at the BORO Hotel in Long Island City, one stop from Midtown. Everything on Saturday happens under one roof.</p>
+    <ol class="days">
+      <li><span class="dot"></span>
+        <div class="when">Friday, October 1</div>
+        <h3>Welcome drinks</h3>
+        <p><span class="tbd">Time and place to come.</span> Casual and optional, a chance to say hi before the big day.</p>
       </li>
-      <li>
-        <div class="day">Saturday<span>October 2</span></div>
-        <div><h3>Ceremony &amp; celebration</h3><p>BORO Hotel, 38-28 27th Street, Long Island City. Ceremony at <span class="tbd">time TBD</span>, followed by dinner and dancing.</p></div>
+      <li><span class="dot"></span>
+        <div class="when">Saturday, October 2 · BORO Hotel</div>
+        <h3>Ceremony &amp; celebration</h3>
+        <p>Ceremony at <span class="tbd">time TBD</span>, then dinner and dancing into the night.</p>
+        <div class="feature">
+          <strong>About dinner</strong>
+          <ul>
+            <li>No plated meal: food stations run all evening, so graze at your own pace.</li>
+            <li>Come hungry. Seriously.</li>
+            <li>Tell us about allergies or dietary needs when you RSVP.</li>
+          </ul>
+        </div>
       </li>
-      <li>
-        <div class="day">Sunday<span>October 3</span></div>
-        <div><h3>Farewell brunch</h3><p><span class="tbd">Details to come.</span></p></div>
+      <li><span class="dot"></span>
+        <div class="when">Sunday, October 3</div>
+        <h3>Farewell brunch</h3>
+        <p><span class="tbd">Details to come.</span> One last round before everyone heads home.</p>
       </li>
     </ol>
   </div>
 </section>
 
 <section id="cats">
-  <h2>The welcoming committee</h2>
+  <div class="head"><h2>The welcoming committee</h2><p class="intro">They've already approved the guest list.</p></div>
   <div class="body">
     <p>Sasha and Sybbie won't be at the wedding, but they'd like you to know they approve.</p>
     <div class="cats">
@@ -250,73 +322,147 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 </section>
 
 <section id="getting-here">
-  <h2>Getting here</h2>
+  <div class="head"><h2>Getting here</h2><p class="intro">Closer to Midtown than most of Brooklyn.</p></div>
   <div class="body">
-    <p>BORO is at <strong>38-28 27th Street, Long Island City, NY 11101</strong>, one subway stop from Manhattan.</p>
-    <p><span class="lines"><span class="line nw">N</span><span class="line nw">W</span></span> The closest stop is <strong>39 Av–Dutch Kills</strong>, a few minutes' walk. <span class="lines"><span class="line seven">7</span></span> Queensboro Plaza is also nearby and connects to the 7.</p>
-    <div class="facts">
-      <div><h3>By air</h3><p>LaGuardia is closest, usually 20–30 minutes by car. JFK and Newark both work too; budget more time, especially on a Friday.</p></div>
-      <div><h3>From Manhattan</h3><p>A short ride on the N, W, or 7 from Midtown, or a quick cab over the Queensboro Bridge.</p></div>
-      <div><h3>Driving</h3><p><span class="tbd">Parking details to come.</span> Street parking in LIC can be tight on weekends, so leave extra time.</p></div>
+    <div class="address">
+      <div><strong>BORO Hotel</strong><span>38-28 27th Street, Long Island City, NY 11101</span></div>
+      <a class="btn quiet" href="https://maps.google.com/?q=BORO+Hotel+38-28+27th+Street+Long+Island+City+NY" target="_blank" rel="noopener">Open in Maps</a>
+    </div>
+    <figure class="map-wrap">
+      <svg class="nyc-map" viewBox="0 0 760 585" role="img" aria-label="Map showing the BORO Hotel in Long Island City, LaGuardia Airport, and nearby Manhattan and Brooklyn landmarks" font-family="Albert Sans, Helvetica Neue, Arial, sans-serif">
+<rect width="760" height="585" fill="#E7E1E9"/>
+<path d="M690.1 640.9L681.1 590.6L682.2 586.8L680.1 584.4L658.6 589.7L635.4 606.7L617.4 625.0L614.2 631.6L597.3 640.9L574.5 640.9L573.5 639.4L572.3 640.9L554.3 640.9L544.0 624.9L547.1 623.2L541.3 608.8L543.7 605.0L524.4 590.1L530.9 581.3L499.0 557.7L503.8 551.5L494.4 544.2L499.0 538.2L456.5 505.0L461.3 498.7L457.9 495.8L455.0 485.7L447.4 479.3L448.9 478.9L447.0 473.0L454.6 467.7L462.0 468.1L455.0 466.0L447.8 451.2L446.5 437.9L442.7 432.9L445.8 425.9L455.4 425.2L461.3 427.4L462.9 425.4L443.7 420.8L425.5 399.8L403.1 395.1L388.3 387.3L383.8 382.4L379.7 369.2L373.1 357.6L354.9 348.3L373.8 338.6L386.0 318.1L379.9 316.5L379.4 318.6L381.5 319.2L375.0 332.8L368.6 339.3L349.8 346.1L321.7 335.4L306.5 336.9L292.5 345.1L286.4 344.0L284.8 341.6L286.2 334.4L290.2 332.5L287.5 329.6L290.4 328.2L291.0 324.9L289.8 324.2L290.9 324.2L289.0 323.3L290.5 319.7L293.4 314.9L296.5 314.9L296.6 312.7L292.8 311.4L297.1 312.5L298.1 310.5L296.7 310.6L294.9 310.1L295.0 309.6L300.7 309.0L297.8 308.5L300.8 308.8L301.3 306.8L297.0 305.3L301.9 306.6L298.4 303.5L302.3 302.5L299.8 300.6L309.1 285.1L324.3 291.3L324.9 289.3L310.8 284.1L313.5 280.9L311.6 280.4L314.7 280.5L315.2 278.6L316.4 280.7L320.9 268.7L332.0 253.5L365.2 197.9L380.7 178.4L384.4 178.6L387.6 174.3L393.4 173.3L395.2 170.1L398.0 170.7L401.6 167.0L401.1 160.7L403.3 159.9L401.3 159.6L403.5 159.1L390.7 153.1L389.0 144.4L389.9 138.9L395.3 128.6L400.8 122.9L414.7 123.3L422.7 132.5L428.1 130.5L437.8 121.3L446.6 116.5L468.3 92.7L476.4 88.1L477.8 82.5L484.5 77.0L483.1 75.6L495.7 59.2L497.3 60.3L507.3 50.5L547.5 61.3L566.1 80.0L566.5 82.4L554.2 96.0L544.1 96.4L539.7 101.5L537.6 109.5L539.4 109.9L540.3 104.8L543.4 101.1L547.4 99.4L554.6 100.3L572.9 87.8L565.5 93.9L571.0 98.9L568.2 101.9L568.5 102.2L571.7 98.9L568.5 102.6L573.5 97.7L578.2 101.2L581.4 97.7L579.5 94.9L584.1 99.2L581.6 98.0L578.4 101.4L584.1 106.8L580.4 114.0L584.1 114.3L586.1 119.5L580.5 125.9L585.1 131.9L583.4 140.0L586.4 127.5L590.4 123.4L593.3 136.4L590.3 146.9L608.8 144.8L608.7 144.3L609.4 144.2L609.2 143.1L609.6 142.5L609.6 144.4L608.9 144.8L616.1 144.3L612.9 139.6L615.2 136.7L611.2 119.2L612.7 111.5L635.0 106.7L638.8 108.2L636.3 101.1L638.2 98.1L634.4 95.7L634.6 95.4L638.3 97.9L640.3 94.6L653.8 103.1L670.3 77.8L676.5 81.7L683.6 69.9L676.1 83.1L677.9 91.2L681.4 90.3L681.9 91.1L678.0 91.5L673.5 98.6L669.4 99.6L664.8 106.9L738.7 155.0L732.7 165.4L725.4 165.4L733.8 171.7L733.6 173.4L730.2 172.0L720.4 183.5L714.2 184.3L713.1 182.4L712.2 184.3L706.1 185.2L720.3 209.1L722.3 211.1L723.5 208.9L722.5 211.0L723.6 212.1L727.7 205.8L724.1 204.1L727.7 205.7L730.6 200.2L731.8 201.0L728.0 205.8L732.2 207.8L731.4 209.0L727.9 205.9L725.5 209.6L732.1 213.7L725.4 209.7L723.8 212.3L737.9 218.4L740.3 222.0L744.3 221.6L753.3 226.5L757.1 226.0L763.0 221.6L760.5 216.8L751.3 220.7L760.8 215.9L765.5 222.2L787.0 204.2L786.7 202.8L789.3 202.9L790.7 197.1L802.2 193.2L802.2 640.9L690.1 640.9ZM802.2 186.0L798.7 188.7L783.3 192.5L769.3 185.2L766.1 177.8L767.2 176.0L764.2 171.6L765.9 168.2L762.1 169.9L761.0 167.6L765.4 166.6L765.6 163.0L760.2 156.5L758.6 157.5L754.5 157.1L760.2 156.3L764.3 147.4L764.4 122.5L760.3 118.3L761.5 114.3L756.0 116.7L753.7 117.1L760.8 113.5L750.1 114.4L750.0 116.1L749.9 114.1L761.8 112.1L752.9 112.2L762.1 111.1L760.5 105.4L756.0 105.2L760.5 105.2L760.7 102.6L763.4 102.3L761.9 101.2L763.2 98.9L758.8 97.8L737.7 100.5L737.0 94.0L732.8 92.9L731.9 95.3L731.1 92.7L725.9 90.7L726.3 85.4L719.8 80.6L722.0 80.9L721.5 78.9L725.7 72.2L731.2 74.3L734.8 68.7L745.4 67.9L748.0 65.7L739.7 63.4L741.1 54.3L748.8 49.6L744.0 42.2L744.2 33.8L748.3 31.3L748.9 28.2L753.3 33.0L764.0 37.0L766.1 25.1L775.9 21.4L778.6 22.2L782.8 28.4L787.2 28.3L788.3 25.1L790.2 26.7L788.4 21.3L790.4 25.5L792.7 24.6L790.1 17.2L793.1 24.5L795.5 25.6L796.7 21.1L801.6 17.4L800.4 13.2L802.2 12.5L801.1 13.4L802.2 16.9L802.2 186.0Z" fill="#FBF7F4" stroke="#D9C6C9" stroke-width="1.2"/><path d="M319.7 339.4L329.4 341.4L352.5 351.5L349.6 360.3L350.2 365.6L352.1 365.4L350.7 360.5L352.0 357.4L356.5 353.3L358.9 354.3L358.1 359.6L360.9 355.1L369.9 359.9L375.2 367.0L381.1 384.2L392.2 394.7L425.4 404.6L431.2 413.2L431.5 418.4L440.7 445.5L444.1 444.4L445.1 450.5L443.4 454.9L427.0 458.6L423.5 462.3L424.4 469.7L412.9 473.9L417.0 480.8L411.1 484.6L413.6 492.7L407.9 494.7L408.4 496.2L414.2 494.1L418.3 506.3L420.7 508.8L415.7 491.3L418.9 489.6L415.4 490.2L414.4 487.3L420.4 483.9L417.8 475.9L418.6 474.3L428.8 470.8L426.8 464.7L429.7 462.0L444.8 457.3L449.1 460.8L451.5 466.3L443.8 472.3L446.1 478.6L455.0 485.7L457.9 495.8L461.3 498.7L456.5 505.0L499.0 538.2L494.4 544.2L503.8 551.5L499.0 557.7L530.9 581.3L524.4 590.1L543.7 605.0L541.3 608.8L547.1 623.2L544.0 624.9L554.3 640.9L84.0 640.9L93.0 633.8L97.0 632.4L101.8 634.3L114.1 610.7L122.6 612.4L123.7 609.7L118.4 602.8L119.3 599.7L128.9 575.7L131.4 574.5L138.3 556.6L149.2 538.2L147.8 537.0L149.6 533.0L159.9 531.2L161.0 534.6L164.9 534.9L167.9 529.8L176.1 532.0L176.1 529.1L177.5 528.7L183.5 529.6L183.9 527.5L196.6 525.9L207.2 527.4L207.3 524.4L215.1 524.1L214.3 526.4L216.1 524.7L216.7 526.9L217.9 524.1L216.0 523.5L218.1 523.9L217.3 530.2L219.5 533.4L222.9 533.9L221.6 539.5L223.2 540.6L227.0 530.7L228.2 531.1L224.1 541.7L227.3 545.2L230.8 540.9L228.0 546.5L234.1 548.5L229.1 559.7L236.0 550.1L243.2 556.4L237.5 548.8L239.9 548.0L248.5 557.8L250.0 557.5L239.3 543.9L241.4 542.1L254.1 556.0L255.5 554.4L241.3 538.7L256.5 549.7L257.6 547.6L243.6 535.9L248.7 538.1L249.0 536.1L233.7 523.5L234.8 522.1L238.7 525.6L242.6 522.8L233.8 514.5L235.4 512.6L248.7 524.7L248.9 518.6L241.7 508.1L243.5 506.7L252.2 519.0L251.3 527.2L252.6 529.9L263.8 538.2L264.0 535.3L256.3 529.0L256.3 517.8L254.0 512.7L253.6 505.5L255.2 500.0L253.3 499.1L256.1 496.3L254.3 495.1L256.5 495.1L255.8 493.4L259.8 485.9L258.2 483.6L264.9 462.7L273.8 449.9L272.1 447.8L272.9 445.4L273.9 444.0L276.7 445.5L283.0 434.5L288.5 418.8L286.6 417.2L290.6 416.5L302.6 421.3L304.2 420.0L302.2 415.8L295.0 416.2L294.4 412.7L288.7 413.2L291.3 397.0L285.9 367.6L296.3 350.8L302.7 344.8L308.5 340.6L319.7 339.4ZM597.3 640.9L614.2 631.6L617.4 625.0L635.4 606.7L658.6 589.7L680.1 584.4L682.2 586.8L681.1 590.6L690.1 640.9L597.3 640.9Z" fill="#FBF7F4" stroke="#D9C6C9" stroke-width="1.2"/><path d="M102.9 631.0L93.6 627.6L95.3 623.1L105.5 626.4L102.9 631.0ZM107.3 623.0L98.0 619.6L99.8 614.9L110.5 619.0L107.3 623.0ZM112.3 615.2L102.4 611.8L104.1 607.0L114.1 610.7L112.3 615.2ZM123.7 609.7L106.4 603.3L108.0 599.0L118.4 602.8L123.7 609.7ZM56.0 594.4L66.6 597.3L69.9 601.3L75.6 598.5L77.1 600.2L70.4 601.8L73.4 605.5L75.9 604.7L73.8 606.7L76.7 607.1L75.2 607.3L74.7 617.1L71.1 623.4L63.8 628.4L58.9 627.9L54.7 630.5L56.4 633.0L62.7 632.9L56.3 633.7L52.6 638.9L55.8 633.4L54.4 630.7L39.9 639.4L40.8 640.9L14.9 640.9L15.1 634.4L41.4 601.7L43.5 595.6L56.0 594.4ZM119.3 599.7L109.7 595.2L112.0 590.5L121.3 594.7L119.3 599.7ZM122.6 590.4L113.9 586.4L116.5 581.2L125.5 585.4L122.6 590.4ZM131.4 573.2L122.2 569.0L124.6 564.3L133.5 568.1L131.4 573.2ZM135.0 564.2L126.6 560.3L128.9 555.5L137.2 559.4L135.0 564.2ZM-42.2 552.6L-32.6 561.0L-34.7 566.4L-39.4 567.8L-42.2 565.2L-42.2 552.6ZM140.6 552.5L134.5 548.9L142.7 538.5L147.2 540.8L140.6 552.5ZM369.2 175.5L340.2 219.9L330.3 231.8L327.0 239.1L304.4 266.9L288.9 281.9L299.7 258.6L329.0 218.1L360.1 168.4L371.0 155.9L379.7 150.9L378.5 164.4L375.3 170.5L369.2 175.5ZM453.3 -10.4L463.1 3.5L483.6 16.4L487.9 24.2L490.7 34.4L485.0 44.5L477.7 53.7L470.5 57.4L455.2 80.8L452.4 91.7L445.5 98.5L440.3 99.3L430.2 106.3L417.8 98.1L401.0 94.7L396.6 88.0L398.1 79.8L412.1 57.3L418.7 50.2L423.4 48.1L430.4 51.1L438.7 51.7L438.4 46.2L436.7 45.4L440.9 45.6L436.0 45.0L437.6 46.5L437.1 50.0L431.2 50.4L434.3 45.0L429.5 42.8L429.3 38.4L435.2 25.1L434.4 15.6L431.9 15.1L434.0 14.6L432.9 10.5L436.2 -0.8L433.8 -2.2L437.0 -2.1L434.7 -3.6L437.0 -3.7L441.3 -10.9L446.0 -11.1L453.3 -10.4ZM403.9 -55.3L407.2 -42.4L420.9 -21.1L426.3 -6.0L425.3 23.1L421.4 30.1L397.6 49.6L392.3 59.3L396.4 61.7L392.0 60.4L388.0 71.4L380.7 82.2L366.3 92.9L363.7 104.4L366.4 115.3L368.5 114.0L369.3 116.5L367.8 119.2L371.5 132.7L367.6 141.1L343.4 173.6L319.1 210.8L299.0 234.9L249.4 309.5L248.6 311.1L250.4 312.2L247.6 313.0L248.8 314.0L245.4 319.2L242.1 338.7L242.8 357.8L234.7 354.4L236.3 356.0L234.5 355.1L235.9 356.9L234.3 357.3L240.4 361.3L241.7 359.5L240.9 361.9L238.4 362.6L234.6 360.5L238.9 383.0L247.1 394.3L247.0 404.9L238.5 452.7L225.7 491.9L220.0 498.3L205.7 500.4L205.9 502.6L175.7 506.5L174.0 501.8L134.8 509.9L121.7 519.1L122.5 521.6L120.7 522.9L124.2 527.1L120.6 530.2L115.8 526.6L118.3 530.9L116.4 531.3L112.6 526.0L111.3 527.1L114.1 530.8L111.3 527.1L107.3 530.7L111.9 536.2L106.4 531.5L104.8 532.7L105.9 533.9L104.1 533.3L108.6 540.5L102.8 534.5L98.8 536.8L104.3 543.1L103.5 543.8L98.0 537.5L87.4 546.4L89.9 551.0L93.9 548.7L94.6 549.9L90.6 552.2L91.4 553.6L90.3 554.3L86.1 546.9L79.5 549.1L81.0 556.2L79.6 552.3L78.8 554.2L77.1 553.0L77.6 554.8L75.6 553.5L76.2 557.1L74.3 553.9L73.4 556.7L71.3 554.5L71.3 558.6L70.6 554.6L69.7 554.7L69.5 556.7L68.9 556.6L69.4 552.1L67.8 551.8L66.6 556.7L66.3 553.8L64.7 556.2L66.2 553.7L64.8 552.8L63.0 555.6L62.9 555.5L64.7 552.7L62.7 552.6L54.3 542.3L52.2 537.9L52.5 534.0L51.4 535.4L47.8 532.6L52.9 531.3L46.9 531.0L45.0 523.4L45.9 518.5L48.4 518.8L49.9 513.7L47.1 512.5L51.6 485.8L51.5 488.5L56.5 489.6L57.8 482.6L52.6 481.5L51.8 484.5L56.1 453.5L70.9 455.3L72.1 447.5L65.3 444.8L65.3 442.9L71.9 444.0L71.4 437.3L73.7 437.5L77.5 413.1L62.6 410.7L62.8 408.0L77.9 409.9L78.6 400.0L65.9 398.7L67.2 386.4L79.5 387.6L80.2 377.2L80.5 373.3L67.5 373.0L67.6 371.6L81.4 370.8L80.9 367.8L75.9 367.5L76.0 366.0L81.0 366.3L82.4 345.2L79.6 343.4L82.5 343.5L82.8 339.0L77.8 338.5L78.0 335.1L74.4 335.8L74.7 333.3L78.0 334.6L78.3 331.1L75.3 331.0L73.2 330.2L86.0 330.8L86.9 328.0L75.3 326.1L75.5 324.6L86.5 326.1L88.3 318.3L86.0 318.0L86.2 316.2L75.5 314.8L75.6 312.7L86.5 313.9L89.1 312.6L89.8 307.3L84.8 304.7L85.0 307.0L83.7 306.9L84.6 304.7L82.5 304.4L82.7 306.7L81.2 306.5L82.2 304.4L79.8 304.0L80.0 306.3L78.6 306.1L79.6 304.0L77.1 303.6L76.7 305.8L77.4 301.1L86.7 302.4L87.1 299.1L78.0 297.8L78.1 295.4L87.6 296.7L88.1 293.4L78.7 292.1L78.8 289.8L88.4 291.0L88.9 287.5L79.5 286.2L79.6 284.1L84.7 284.6L86.3 279.0L81.0 276.9L87.6 278.8L90.6 268.2L87.2 265.5L91.1 266.6L84.5 263.0L84.6 262.3L91.4 265.6L94.0 254.5L106.4 235.1L104.4 233.9L105.4 232.1L97.1 227.2L99.2 223.5L107.6 228.0L110.6 225.7L108.4 223.4L111.2 224.6L110.1 222.9L116.8 214.3L107.4 208.9L117.4 213.3L120.2 208.2L111.4 201.9L120.8 207.1L122.6 203.9L113.4 198.8L113.3 196.6L127.0 204.0L130.3 199.5L117.1 192.1L118.0 190.2L131.4 197.5L134.0 192.0L120.2 184.2L120.8 182.6L134.8 190.2L137.7 184.9L124.0 177.2L124.7 175.5L138.7 183.2L141.6 177.8L127.8 170.0L128.9 168.5L139.0 174.3L141.1 170.4L130.8 164.6L131.9 162.6L142.2 168.3L146.0 161.5L144.0 159.1L146.5 160.5L148.1 159.0L138.9 153.0L139.7 151.4L148.7 156.4L150.1 154.0L141.7 150.2L143.0 149.1L140.7 147.7L151.3 153.3L152.7 150.9L142.8 145.0L152.3 149.5L159.3 138.7L160.2 136.6L158.8 136.2L165.0 125.0L167.2 124.9L173.7 113.2L162.3 113.8L173.6 112.1L177.0 102.3L188.0 81.6L185.0 77.6L181.1 82.4L185.2 76.7L188.2 81.3L189.7 78.5L186.8 76.9L189.9 77.9L191.5 75.0L186.0 75.3L191.6 74.8L261.7 -55.7L403.9 -55.3Z" fill="#FBF7F4" stroke="#D9C6C9" stroke-width="1.2"/><path d="M561.8 24.3L557.5 24.3L552.3 19.5L557.8 16.1L562.5 20.5L561.8 24.3ZM595.3 7.4L598.7 7.4L598.6 9.8L605.4 11.1L617.5 23.9L617.9 22.5L624.5 27.0L640.2 30.5L656.6 44.3L663.4 47.6L670.4 55.5L672.1 67.5L668.7 73.6L662.5 78.8L648.0 78.9L640.5 81.6L595.1 70.4L589.8 56.4L581.9 53.5L579.2 40.0L583.5 18.0L588.5 12.5L587.6 11.1L595.9 11.9L598.2 10.1L595.3 7.4ZM563.8 -4.4L554.6 5.0L548.0 4.1L549.8 2.7L550.1 -4.5L548.7 -5.1L551.0 -5.0L551.5 -10.8L555.9 -13.4L563.8 -4.4ZM760.8 -55.7L759.8 -51.0L761.1 -49.5L760.2 -48.6L761.9 -48.6L760.2 -48.5L760.6 -46.5L765.2 -46.5L762.0 -44.9L766.7 -41.1L766.8 -35.4L770.4 -33.0L769.8 -28.8L765.7 -26.2L762.8 -28.2L762.5 -26.0L762.4 -28.2L760.8 -28.4L759.2 -25.1L735.3 -25.2L732.1 -27.1L736.0 -26.1L736.3 -28.2L729.4 -29.6L731.1 -27.4L722.5 -32.8L724.9 -33.4L724.0 -37.0L721.8 -36.6L722.1 -33.3L720.5 -37.2L720.4 -42.2L721.3 -38.3L723.4 -38.1L724.6 -46.0L722.4 -55.7L760.8 -55.7ZM683.5 -37.6L668.2 -8.6L665.5 -7.2L665.6 -1.0L663.0 -1.4L664.1 -6.5L660.6 -4.8L653.3 -7.8L650.8 -8.1L650.5 -6.0L641.2 -7.4L642.2 -12.7L639.9 -15.1L633.1 -15.4L617.7 -12.1L617.6 -10.4L612.0 -11.9L602.6 -22.0L599.7 -27.9L597.1 -26.7L594.2 -28.9L594.4 -32.6L590.5 -27.6L593.8 -33.0L584.8 -33.1L583.6 -31.3L582.8 -35.6L579.7 -35.4L580.4 -31.5L581.5 -31.8L582.0 -29.6L585.8 -27.9L585.7 -27.7L583.2 -28.4L581.8 -29.5L581.4 -31.5L580.3 -31.3L579.5 -35.3L570.6 -34.6L570.7 -31.9L568.8 -38.1L568.8 -32.1L567.5 -36.7L567.2 -35.1L565.9 -36.3L566.3 -32.4L565.3 -36.2L564.8 -34.6L559.5 -34.6L559.8 -32.3L557.3 -34.4L557.9 -30.8L556.7 -34.2L556.8 -31.5L555.1 -30.3L539.5 -27.6L537.4 -23.2L529.8 -17.7L520.1 -5.0L514.8 2.4L516.0 2.8L516.5 3.4L513.3 3.1L513.8 5.8L499.5 18.8L490.9 17.9L468.5 5.6L463.4 2.2L458.8 -7.2L452.1 -13.2L432.2 -15.0L433.7 -19.6L432.1 -22.3L427.6 -22.9L412.6 -46.5L411.1 -52.3L411.2 -55.7L676.1 -55.7L683.5 -37.6Z" fill="#FBF7F4" stroke="#D9C6C9" stroke-width="1.2"/>
+<polygon points="240.7,198.4 203.1,177.8 303.2,-1.7 339.5,17.8" fill="#DCE8DA" stroke="#B9CDB5" stroke-width="1"/>
+<g font-size="14" letter-spacing="3" fill="#7A4A55" opacity=".75">
+<text x="168.9" y="139.3" font-size="15" fill="#7A4A55" text-anchor="middle" font-weight="400">MANHATTAN</text>
+<text x="570.0" y="373.4" font-size="15" fill="#7A4A55" text-anchor="middle" font-weight="400">QUEENS</text>
+<text x="443.3" y="529.5" font-size="15" fill="#7A4A55" text-anchor="middle" font-weight="400">BROOKLYN</text>
+</g>
+<g class="subway"><polyline points="116.5,245.8 181.6,248.0 206.0,256.9 225.0,268.6 322.6,319.9 342.8,321.0 355.9,294.8 379.2,273.7 418.4,308.8 447.6,313.8 470.8,316.6 495.3,311.0 536.6,303.2 564.5,298.7 586.0,295.9 617.7,292.6 648.1,287.6 677.7,283.1 706.0,280.3 737.6,269.2 802.2,245.2" fill="none" stroke="#B933AD" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/><polyline points="364.4,298.2 339.5,312.1 319.2,382.3 333.6,421.3 331.9,486.6 336.5,523.3 336.5,555.7 342.0,613.1" fill="none" stroke="#6CBE45" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/><polyline points="498.2,138.8 458.1,186.2 442.1,214.0 423.9,241.9 412.9,262.5 379.2,273.7 337.8,245.2 263.5,207.9 240.2,196.2 207.7,197.3 193.4,222.9 182.4,252.5 177.8,280.9 174.4,303.2 171.8,327.2 166.4,358.9 158.3,387.4 136.4,421.9 121.6,450.9 98.0,482.7 78.5,498.3 71.8,538.9 67.6,613.1" fill="none" stroke="#E8B500" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/><circle cx="412.9" cy="262.5" r="5" fill="#fff" stroke="#4A1622" stroke-width="2"/><circle cx="379.2" cy="273.7" r="5" fill="#fff" stroke="#4A1622" stroke-width="2"/><circle cx="355.9" cy="294.8" r="5" fill="#fff" stroke="#4A1622" stroke-width="2"/><circle cx="319.2" cy="382.3" r="5" fill="#fff" stroke="#4A1622" stroke-width="2"/></g>
+<circle cx="488.9" cy="171.2" r="11" fill="#FCCC0A"/><text x="488.9" y="176.2" font-size="14" font-weight="700" fill="#111" text-anchor="middle">N</text><circle cx="514.9" cy="171.2" r="11" fill="#FCCC0A"/><text x="514.9" y="176.2" font-size="14" font-weight="700" fill="#111" text-anchor="middle">W</text><circle cx="586.0" cy="277.9" r="11" fill="#B933AD"/><text x="586.0" y="282.9" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">7</text><circle cx="313.9" cy="486.6" r="11" fill="#6CBE45"/><text x="313.9" y="491.6" font-size="14" font-weight="700" fill="#111" text-anchor="middle">G</text>
+<text x="285.0" y="342.8" font-size="14" fill="#7A4A55" text-anchor="middle" font-weight="400" font-style="italic">East River</text>
+<text transform="rotate(-72 54.9 306.5)" x="54.9" y="306.5" font-size="14" fill="#7A4A55" text-anchor="middle" font-weight="400" font-style="italic">Hudson River</text>
+<line x1="300.2" y1="224.6" x2="376.6" y2="269.8" stroke="#7A4A55" stroke-width="3" stroke-dasharray="1 5" stroke-linecap="round"/>
+<text x="304.2" y="212.6" font-size="14" fill="#7A4A55" text-anchor="start" font-weight="400">Queensboro Bridge</text>
+<circle cx="182.4" cy="250.8" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="168.4" y="240.8" font-size="17" fill="#4A1622" text-anchor="end" font-weight="400">Times Square</text>
+<circle cx="187.0" cy="287.6" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="187.0" y="313.6" font-size="17" fill="#4A1622" text-anchor="middle" font-weight="400">Empire State Building</text>
+<text transform="rotate(-60 268.1 104.8)" x="268.1" y="109.8" font-size="15" fill="#3F6B4A" text-anchor="middle" font-weight="400">Central Park</text>
+<circle cx="333.6" cy="390.1" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="345.6" y="395.1" font-size="17" fill="#4A1622" text-anchor="start" font-weight="400">Greenpoint (our neighborhood)</text>
+<circle cx="139.8" cy="523.3" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="151.8" y="528.3" font-size="17" fill="#4A1622" text-anchor="start" font-weight="400">Brooklyn Bridge</text>
+<text x="424.9" y="254.5" font-size="13" fill="#7A4A55" text-anchor="start" font-weight="400">39 Av</text>
+<polygon points="390.1,233.4 394.9,244.8 407.3,245.8 397.8,253.9 400.7,265.9 390.1,259.5 379.6,265.9 382.4,253.9 373.0,245.8 385.4,244.8" fill="#A3243A" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+<text x="412.1" y="281.4" font-size="19" fill="#A3243A" text-anchor="start" font-weight="600">BORO Hotel</text>
+<text x="412.1" y="301.4" font-size="15" fill="#7A4A55" text-anchor="start" font-weight="400">The wedding</text>
+<polygon points="658.7,112.7 662.9,122.9 673.9,123.8 665.5,131.0 668.1,141.7 658.7,135.9 649.3,141.7 651.8,131.0 643.4,123.8 654.4,122.9" fill="#E0662A" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+<text x="658.7" y="104.7" font-size="18" fill="#9A4214" text-anchor="middle" font-weight="600">LaGuardia (LGA)</text>
+<text x="744.0" y="567.0" font-size="14" fill="#7A4A55" text-anchor="end" font-weight="400">JFK: about 35–60 min by car</text>
+<text x="16.0" y="567.0" font-size="14" fill="#7A4A55" text-anchor="start" font-weight="400">Newark (EWR) is west, across the Hudson</text>
+</svg>
+      <figcaption>
+        <span><i class="k star-boro"></i>BORO Hotel, the wedding</span>
+        <span><i class="k star-lga"></i>LaGuardia, 15–20 min by car or rideshare</span>
+        <span><i class="k spot"></i>Landmarks for reference</span>
+        <span><i class="k ln" style="background:#E8B500"></i>N / W</span>
+        <span><i class="k ln" style="background:#B933AD"></i>7</span>
+        <span><i class="k ln" style="background:#6CBE45"></i>G</span>
+      </figcaption>
+    </figure>
+    <p class="small map-note">Times Square is about 15 minutes away on the N or W; Greenpoint is a short ride on the G.</p>
+    <div class="ways">
+      <div>
+        <h3><span class="lines"><span class="line nw">N</span><span class="line nw">W</span></span>Subway</h3>
+        <p>Take the N or W to <strong>39 Av–Dutch Kills</strong>, a few minutes' walk from the hotel.</p>
+        <p class="small"><span class="lines"><span class="line seven">7</span></span>Queensboro Plaza is also close and connects to the 7.</p>
+      </div>
+      <div>
+        <h3>From the airport</h3>
+        <ul class="airports">
+          <li>LaGuardia (LGA)<span>about 15–20 min by car or rideshare</span></li>
+          <li>JFK<span>about 35–60 min by car</span></li>
+          <li>Newark (EWR)<span>about 45–75 min by car</span></li>
+        </ul>
+        <p class="small">LaGuardia is the easiest. Friday afternoon traffic can double these.</p>
+      </div>
+      <div>
+        <h3>From Manhattan</h3>
+        <p>One stop on the N, W, or 7 from Midtown, or a quick cab over the Queensboro Bridge.</p>
+      </div>
+      <div>
+        <h3>Driving</h3>
+        <p><span class="tbd">Parking details to come.</span></p>
+        <p class="small">Street parking in LIC gets tight on weekends, so leave extra time.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="stay">
-  <h2>Where to stay</h2>
+  <div class="head"><h2>Where to stay</h2><p class="intro">Roll out of bed and into the party.</p></div>
   <div class="body">
-    <p>We have a block of rooms at BORO, so you can walk from your room to the party and back.</p>
     <div class="stay">
       <h3>BORO Hotel room block</h3>
-      <p>Mention the Jackie &amp; Larkin wedding when booking, or use the link below. Please book by <span class="tbd">cutoff date</span>; rooms are limited.</p>
+      <p>We've reserved rooms at the venue for our guests.</p>
+      <ul class="perks">
+        <li>Walk from your room to the ceremony, dinner, and dance floor</li>
+        <li>No late-night cab home after the party</li>
+        <li>Book by <span class="tbd">cutoff date</span>; rooms are limited</li>
+      </ul>
       <a class="btn" data-link="roomBlock" href="#stay">Book a room at BORO</a>
+      <p class="small" style="margin:1rem 0 0; color:var(--muted); font-size:.95rem">Booking by phone? Mention the Jackie &amp; Larkin wedding.</p>
     </div>
-    <p style="margin-top:1.5rem">If the block fills up, other Long Island City hotels are close by, and Midtown Manhattan is a short subway ride away.</p>
+    <p style="margin-top:1.5rem">If the block fills up, other Long Island City hotels are nearby, and Midtown Manhattan is one subway stop away.</p>
   </div>
 </section>
 
 <section id="around">
-  <h2>Eat &amp; explore</h2>
+  <div class="head"><h2>Eat &amp; explore</h2><p class="intro">Food is kind of our thing.</p></div>
   <div class="body">
-    <p>Food is kind of our thing, so here's where we'd send you. Long Island City is where you'll be staying; Greenpoint is our neighborhood, a short ride away.</p>
+    <p>Staying the weekend? Here's where we'd send you. Long Island City is right outside the hotel; Greenpoint is our neighborhood, a short ride on the G.</p>
 
     <h3 class="group-title">Long Island City</h3>
-    <ul class="places">
-      <li><strong>Gantry Plaza State Park</strong><span class="where">Waterfront</span><p>The best view of the Manhattan skyline, especially at sunset.</p></li>
-      <li><strong>MoMA PS1</strong><span class="where">Court Square</span><p>Contemporary art in an old public school.</p></li>
-      <li><strong>Noguchi Museum</strong><span class="where">Near the river</span><p>A calm garden and sculpture museum, worth the walk.</p></li>
-      <li><strong>Dutch Kills</strong><span class="where">Near the hotel</span><p>Serious cocktails, a few blocks from BORO.</p></li>
-      <li><strong><span class="tbd">Your favorite LIC restaurant</span></strong><p><span class="tbd">Why you love it.</span></p></li>
+    <ul class="spots">
+      <li><strong>Gantry Plaza State Park</strong><p>The best view of the Manhattan skyline, especially at sunset.</p><span class="tag">Views</span></li>
+      <li><strong>MoMA PS1</strong><p>Contemporary art in a former public school.</p><span class="tag">Art</span></li>
+      <li><strong>Noguchi Museum</strong><p>A calm sculpture garden and museum near the river.</p><span class="tag">Art</span></li>
+      <li><strong>Socrates Sculpture Park</strong><p>Outdoor art on the East River waterfront.</p><span class="tag">Outdoors</span></li>
+      <li><strong>Dutch Kills</strong><p>Serious cocktails, a few blocks from BORO.</p><span class="tag drink">Drinks</span></li>
+      <li class="ours"><strong><span class="tbd">Your favorite LIC restaurant</span></strong><p><span class="tbd">Why you love it.</span></p><span class="tag eat">Eat</span></li>
     </ul>
 
     <h3 class="group-title">Greenpoint, our neighborhood</h3>
-    <ul class="places">
-      <li><strong>Transmitter Park</strong><span class="where">Waterfront</span><p>A small pier with a big view.</p></li>
-      <li><strong><span class="tbd">Our go-to dinner spot</span></strong><p><span class="tbd">What to order.</span></p></li>
-      <li><strong><span class="tbd">Our coffee place</span></strong><p><span class="tbd">A line about it.</span></p></li>
-      <li><strong><span class="tbd">Where we'd take you for a drink</span></strong><p><span class="tbd">A line about it.</span></p></li>
+    <ul class="spots">
+      <li><strong>Transmitter Park</strong><p>A small pier with a big skyline view.</p><span class="tag">Views</span></li>
+      <li class="ours"><strong><span class="tbd">Our go-to dinner spot</span></strong><p><span class="tbd">What to order.</span></p><span class="tag eat">Eat</span></li>
+      <li class="ours"><strong><span class="tbd">Our coffee place</span></strong><p><span class="tbd">A line about it.</span></p><span class="tag eat">Coffee</span></li>
+      <li class="ours"><strong><span class="tbd">Where we'd take you for a drink</span></strong><p><span class="tbd">A line about it.</span></p><span class="tag drink">Drinks</span></li>
     </ul>
-    <p style="margin-top:1.25rem"><span class="lines"><span class="line g">G</span></span> The G train connects Long Island City (Court Sq) and Greenpoint directly.</p>
+    <p style="margin-top:1.25rem"><span class="lines"><span class="line g">G</span></span> The G train runs directly between Long Island City (Court Sq) and Greenpoint.</p>
   </div>
 </section>
 
 <section id="faq">
-  <h2>Questions</h2>
+  <div class="head"><h2>Questions</h2><p class="intro">The practical stuff.</p></div>
   <div class="body">
-    <details><summary>What should I wear?</summary><p><span class="tbd">Dress code to come.</span> Early October in New York is usually mild, somewhere in the 60s, and cooler once the sun goes down.</p></details>
+    <details><summary>What should I wear?</summary><p><span class="tbd">Dress code to come.</span></p></details>
+    <details><summary>What will the weather be like?</summary><p>Early October in New York is usually mild, with highs around 70°F and cooler evenings. Bring a layer for later in the night.</p></details>
     <details><summary>Are kids welcome?</summary><p><span class="tbd">Your answer here.</span></p></details>
     <details><summary>Can I bring a plus-one?</summary><p>Your invitation will list everyone who's invited. If you have questions, just reach out to us.</p></details>
     <details><summary>I have a dietary restriction.</summary><p>Let us know when you RSVP. With this much food, we'll make sure there's plenty for you.</p></details>
-    <details><summary>Who do I contact with questions?</summary><p><span class="tbd">Email or phone number.</span></p></details>
+    <details><summary>How do I get home after the party?</summary><p>If you're in the room block, you're already home. Otherwise, the N and W at 39 Av–Dutch Kills are a short walk, and cabs and rideshares are easy to find in LIC.</p></details>
+    <details><summary>Is there a registry?</summary><p>Your presence is the gift. If you'd like to give something, our registry is linked in the RSVP section below.</p></details>
+    <details><summary>Who do I contact with questions?</summary><p><span class="tbd">Email address.</span></p></details>
   </div>
 </section>
 
 <section id="rsvp" class="rsvp">
-  <h2>RSVP</h2>
+  <div class="head"><h2>RSVP</h2><p class="intro">Tell us you're coming.</p></div>
   <div class="body">
-    <p class="lede">Formal invitations will follow. Please RSVP by <span class="tbd">RSVP deadline</span>.</p>
-    <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
-    <a class="btn quiet" data-link="registry" href="#rsvp">View our registry</a>
+    <div class="rsvp-card">
+      <img src="logo-mark.svg" alt="">
+      <p class="lede">Formal invitations will follow. Please RSVP by <span class="tbd">RSVP deadline</span>.</p>
+      <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
+      <a class="btn quiet" data-link="registry" href="#rsvp">View our registry</a>
+    </div>
   </div>
 </section>
 </main>
@@ -325,6 +471,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
   <span class="sig">Jackie &amp; Larkin</span>
   October 2, 2027 · Long Island City · jackie-larkin.com
 </footer>
+<div class="band" aria-hidden="true"></div>
 
 <script>
 /* ---- Fill these in when the links exist. Empty links show as "opens soon". ---- */
