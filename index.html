@@ -10,14 +10,14 @@
 <style>
 /* ---------- Tokens ---------- */
 :root{
-  --pearl:#EFE9E6;      /* background: oyster shell, faint blush */
-  --paper:#F7F3F1;      /* raised surfaces */
-  --ink:#2A1331;        /* text: deep aubergine */
+  --pearl:#F4ECE8;      /* background: blush pearl */
+  --paper:#FAF5F2;      /* raised surfaces */
+  --ink:#4A1622;        /* text: deep wine */
   --river:#6E2A6E;      /* plum: links and the ampersand */
   --saffron:#E0662A;    /* persimmon: focus, highlights, hover */
-  --oxblood:#962334;    /* wine red: secondary accent */
-  --mist:#D8CBCF;       /* rules */
-  --muted:#6B5A70;
+  --oxblood:#A3243A;    /* wine red: secondary accent */
+  --mist:#E2D2D2;       /* rules */
+  --muted:#7A4A55;
   --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans:"Albert Sans", "Helvetica Neue", Arial, sans-serif;
   box-sizing:border-box;
@@ -26,13 +26,13 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --pearl:#1A0F1E; --paper:#241628; --ink:#F3EAEC; --river:#D5A4DC;
-    --saffron:#F28A55; --oxblood:#E9788A; --mist:#3E2B44; --muted:#B8A5BC;
+    --pearl:#1E0F12; --paper:#2A161B; --ink:#F5EAEA; --river:#D5A4DC;
+    --saffron:#F28A55; --oxblood:#EC7C8C; --mist:#45282F; --muted:#BFA2A8;
   }
 }
 :root[data-theme="dark"]{
-  --pearl:#1A0F1E; --paper:#241628; --ink:#F3EAEC; --river:#D5A4DC;
-  --saffron:#F28A55; --oxblood:#E9788A; --mist:#3E2B44; --muted:#B8A5BC;
+  --pearl:#1E0F12; --paper:#2A161B; --ink:#F5EAEA; --river:#D5A4DC;
+  --saffron:#F28A55; --oxblood:#EC7C8C; --mist:#45282F; --muted:#BFA2A8;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
@@ -158,6 +158,15 @@ details p{margin:.6rem 0 0; max-width:62ch}
 .rsvp{text-align:left}
 .rsvp .btn{margin-top:1rem; margin-right:.5rem}
 
+
+/* Cats */
+.cats{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; margin:1.75rem 0 0; max-width:560px}
+.cats figure{margin:0}
+.cats img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:999px 999px 6px 6px / 40% 40% 6px 6px; background:var(--mist)}
+.cats figcaption{margin-top:.7rem}
+.cats .cat-name{display:block; font-family:var(--serif); font-size:1.35rem; color:var(--river)}
+.cats .cat-note{color:var(--muted); font-size:.95rem}
+
 footer{max-width:1040px; margin:0 auto; padding:3rem 1.25rem 4rem; border-top:1px solid var(--mist); color:var(--muted); font-size:.9rem}
 footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); display:block; margin-bottom:.4rem}
 </style>
@@ -209,6 +218,17 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
         <div><h3>Farewell brunch</h3><p><span class="tbd">Details to come.</span></p></div>
       </li>
     </ol>
+  </div>
+</section>
+
+<section id="cats">
+  <h2>The welcoming committee</h2>
+  <div class="body">
+    <p>Sybbie and Sasha won't be at the wedding, but they'd like you to know they approve.</p>
+    <div class="cats">
+      <figure><img src="cat-window.jpg" alt="Sybbie, a white and tabby cat, sitting in a window" width="720" height="900"><figcaption><span class="cat-name">Sybbie</span><span class="cat-note">Head of window security.</span></figcaption></figure>
+      <figure><img src="cat-tote.jpg" alt="Sasha, a fluffy tabby cat, sitting inside a pink tote bag" width="720" height="900" loading="lazy"><figcaption><span class="cat-name">Sasha</span><span class="cat-note">Already packed for the weekend.</span></figcaption></figure>
+    </div>
   </div>
 </section>
 
