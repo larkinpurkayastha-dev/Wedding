@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jackie & Larkin · October 2, 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --pearl:#EFE9E6;      /* background: oyster shell, faint blush */
+  --paper:#F7F3F1;      /* raised surfaces */
+  --ink:#2A1331;        /* text: deep aubergine */
+  --river:#6E2A6E;      /* plum: links and the ampersand */
+  --saffron:#E0662A;    /* persimmon: focus, highlights, hover */
+  --oxblood:#962334;    /* wine red: secondary accent */
+  --mist:#D8CBCF;       /* rules */
+  --muted:#6B5A70;
+  --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --sans:"Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --pearl:#1A0F1E; --paper:#241628; --ink:#F3EAEC; --river:#D5A4DC;
+    --saffron:#F28A55; --oxblood:#E9788A; --mist:#3E2B44; --muted:#B8A5BC;
+  }
+}
+:root[data-theme="dark"]{
+  --pearl:#1A0F1E; --paper:#241628; --ink:#F3EAEC; --river:#D5A4DC;
+  --saffron:#F28A55; --oxblood:#E9788A; --mist:#3E2B44; --muted:#B8A5BC;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--pearl); color:var(--ink);
+  font-family:var(--sans); font-size:1.0625rem; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:var(--river); text-underline-offset:3px; text-decoration-thickness:1px}
+a:focus-visible, button:focus-visible{outline:2px solid var(--saffron); outline-offset:3px; border-radius:2px}
+
+/* ---------- Nav ---------- */
+nav{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:10;
+  background:color-mix(in srgb, var(--pearl) 92%, transparent);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--mist);
+}
+.nav-inner{
+  max-width:1040px; margin:0 auto; padding:.8rem 1.25rem;
+  display:flex; align-items:center; gap:1.5rem; overflow-x:auto; white-space:nowrap;
+}
+.monogram{font-family:var(--serif); font-size:1.25rem; text-decoration:none; color:var(--ink); margin-right:auto}
+.nav-inner a:not(.monogram):not(.btn){color:var(--ink); text-decoration:none; font-size:.95rem}
+.nav-inner a:not(.monogram):not(.btn):hover{color:var(--river)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block; font:500 .95rem/1 var(--sans); text-decoration:none;
+  padding:.75rem 1.2rem; border-radius:999px;
+  background:var(--ink); color:var(--pearl); border:1px solid var(--ink);
+}
+.btn:hover{background:var(--oxblood); border-color:var(--oxblood); color:#fff}
+.btn.quiet{background:transparent; color:var(--ink)}
+.btn.quiet:hover{background:var(--ink); color:var(--pearl)}
+.btn[aria-disabled="true"]{opacity:.55; pointer-events:none}
+.nav-inner .btn{padding:.55rem 1rem}
+
+/* ---------- Hero ---------- */
+.hero{
+  max-width:1040px; margin:0 auto; padding:clamp(3rem,10vw,7rem) 1.25rem clamp(3rem,8vw,5rem);
+}
+.names{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(3.4rem, 13vw, 9.5rem); line-height:.92; letter-spacing:-.02em;
+  margin:0;
+}
+.names .amp{display:block; font-size:.45em; color:var(--river); margin:.15em 0 .05em .08em}
+.hero-meta{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.25rem 2rem;
+  margin-top:clamp(2rem,6vw,3.5rem); padding-top:2rem; border-top:0; position:relative;
+}
+.hero-meta::before{content:""; position:absolute; top:0; left:0; right:0; height:6px;
+  background:linear-gradient(90deg, var(--river) 0 33.3%, var(--oxblood) 33.3% 66.6%, var(--saffron) 66.6% 100%);}
+.hero-meta dt{font-size:.85rem; color:var(--muted)}
+.hero-meta dd{margin:.15rem 0 0; font-family:var(--serif); font-size:1.35rem; line-height:1.3}
+.hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:2rem}
+
+/* ---------- Sections ---------- */
+section{
+  max-width:1040px; margin:0 auto; padding:clamp(3rem,8vw,5rem) 1.25rem;
+  border-top:1px solid var(--mist);
+  display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem;
+}
+@media (min-width:820px){
+  section{grid-template-columns:260px minmax(0,1fr); gap:3rem}
+}
+h2{font-family:var(--serif); font-weight:400; font-size:clamp(2rem,4.5vw,2.8rem); line-height:1.05; margin:0}
+h3{font-family:var(--serif); font-weight:500; font-size:1.3rem; margin:0 0 .35rem}
+.body{max-width:68ch}
+.body > p:first-child{margin-top:0}
+.lede{font-size:1.2rem; line-height:1.55}
+
+/* Weekend timeline: a real sequence, so it gets day markers */
+.timeline{list-style:none; margin:0; padding:0}
+.timeline li{display:grid; grid-template-columns:7.5rem 1fr; gap:1rem; padding:1.25rem 0; border-bottom:1px solid var(--mist)}
+.timeline li:first-child{padding-top:0}
+.day{font-family:var(--serif); font-size:1.05rem; line-height:1.3; color:var(--oxblood)}
+.day span{display:block; color:var(--muted); font-family:var(--sans); font-size:.85rem}
+.timeline p{margin:.2rem 0 0}
+@media (max-width:480px){ .timeline li{grid-template-columns:1fr; gap:.25rem} }
+
+/* Placeholder text the couple still needs to fill in */
+.tbd{background:color-mix(in srgb, var(--saffron) 22%, transparent); padding:0 .25em; border-radius:3px}
+
+/* Subway line bullets */
+.lines{display:inline-flex; gap:.3rem; vertical-align:-.2em; margin-right:.25rem}
+.line{
+  width:1.5em; height:1.5em; border-radius:50%; display:inline-grid; place-items:center;
+  font:600 .8rem/1 var(--sans); color:#111;
+}
+.line.nw{background:#FCCC0A}
+.line.seven{background:#B933AD; color:#fff}
+.line.e{background:#0039A6; color:#fff}
+.line.g{background:#6CBE45}
+
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem 2rem; margin-top:1.75rem}
+.facts p{margin:0; color:var(--muted); font-size:.98rem}
+
+.stay{background:var(--paper); border:1px solid var(--mist); border-radius:6px; padding:1.5rem; margin-top:1.5rem}
+.stay p{margin:.4rem 0 1rem}
+
+/* Places */
+.places{list-style:none; padding:0; margin:1.5rem 0 0}
+.places li{padding:1rem 0; border-top:1px solid var(--mist)}
+.places strong{font-family:var(--serif); font-weight:500; font-size:1.15rem}
+.places .where{color:var(--muted); font-size:.9rem; margin-left:.4rem}
+.places p{margin:.2rem 0 0}
+.group-title{margin-top:2.25rem}
+
+/* FAQ */
+details{border-top:1px solid var(--mist); padding:1rem 0}
+details:last-of-type{border-bottom:1px solid var(--mist)}
+summary{cursor:pointer; font-family:var(--serif); font-size:1.2rem; list-style:none; display:flex; justify-content:space-between; gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-family:var(--sans); color:var(--river)}
+details[open] summary::after{content:"–"}
+details p{margin:.6rem 0 0; max-width:62ch}
+
+/* RSVP */
+.rsvp{text-align:left}
+.rsvp .btn{margin-top:1rem; margin-right:.5rem}
+
+footer{max-width:1040px; margin:0 auto; padding:3rem 1.25rem 4rem; border-top:1px solid var(--mist); color:var(--muted); font-size:.9rem}
+footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); display:block; margin-bottom:.4rem}
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <div class="nav-inner">
+    <a class="monogram" href="#top">J &amp; L</a>
+    <a href="#weekend">The weekend</a>
+    <a href="#getting-here">Getting here</a>
+    <a href="#stay">Where to stay</a>
+    <a href="#around">Eat &amp; explore</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <h1 class="names">Jackie<span class="amp">&amp;</span>Larkin</h1>
+  <dl class="hero-meta">
+    <div><dt>When</dt><dd>Saturday, October 2, 2027</dd></div>
+    <div><dt>Where</dt><dd>BORO Hotel<br>Long Island City, Queens</dd></div>
+    <div><dt>Bring</dt><dd>An appetite</dd></div>
+  </dl>
+  <div class="hero-actions">
+    <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
+    <a class="btn quiet" data-link="roomBlock" href="#stay">Book a room</a>
+    <a class="btn quiet" data-link="registry" href="#rsvp">Registry</a>
+  </div>
+</header>
+
+<main>
+<section id="weekend">
+  <h2>The weekend</h2>
+  <div class="body">
+    <p class="lede">We're getting married at the BORO Hotel in Long Island City, right across the river from Midtown. The night is built around food: generous stations instead of a plated dinner, so come hungry and graze all evening.</p>
+    <ol class="timeline">
+      <li>
+        <div class="day">Friday<span>October 1</span></div>
+        <div><h3>Welcome drinks</h3><p><span class="tbd">Time and place to come.</span> Casual and optional, a chance to say hi before the big day.</p></div>
+      </li>
+      <li>
+        <div class="day">Saturday<span>October 2</span></div>
+        <div><h3>Ceremony &amp; celebration</h3><p>BORO Hotel, 38-28 27th Street, Long Island City. Ceremony at <span class="tbd">time TBD</span>, followed by dinner and dancing.</p></div>
+      </li>
+      <li>
+        <div class="day">Sunday<span>October 3</span></div>
+        <div><h3>Farewell brunch</h3><p><span class="tbd">Details to come.</span></p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="getting-here">
+  <h2>Getting here</h2>
+  <div class="body">
+    <p>BORO is at <strong>38-28 27th Street, Long Island City, NY 11101</strong>, one subway stop from Manhattan.</p>
+    <p><span class="lines"><span class="line nw">N</span><span class="line nw">W</span></span> The closest stop is <strong>39 Av–Dutch Kills</strong>, a few minutes' walk. <span class="lines"><span class="line seven">7</span></span> Queensboro Plaza is also nearby and connects to the 7.</p>
+    <div class="facts">
+      <div><h3>By air</h3><p>LaGuardia is closest, usually 20–30 minutes by car. JFK and Newark both work too; budget more time, especially on a Friday.</p></div>
+      <div><h3>From Manhattan</h3><p>A short ride on the N, W, or 7 from Midtown, or a quick cab over the Queensboro Bridge.</p></div>
+      <div><h3>Driving</h3><p><span class="tbd">Parking details to come.</span> Street parking in LIC can be tight on weekends, so leave extra time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stay">
+  <h2>Where to stay</h2>
+  <div class="body">
+    <p>We have a block of rooms at BORO, so you can walk from your room to the party and back.</p>
+    <div class="stay">
+      <h3>BORO Hotel room block</h3>
+      <p>Mention the Jackie &amp; Larkin wedding when booking, or use the link below. Please book by <span class="tbd">cutoff date</span>; rooms are limited.</p>
+      <a class="btn" data-link="roomBlock" href="#stay">Book a room at BORO</a>
+    </div>
+    <p style="margin-top:1.5rem">If the block fills up, other Long Island City hotels are close by, and Midtown Manhattan is a short subway ride away.</p>
+  </div>
+</section>
+
+<section id="around">
+  <h2>Eat &amp; explore</h2>
+  <div class="body">
+    <p>Food is kind of our thing, so here's where we'd send you. Long Island City is where you'll be staying; Greenpoint is our neighborhood, a short ride away.</p>
+
+    <h3 class="group-title">Long Island City</h3>
+    <ul class="places">
+      <li><strong>Gantry Plaza State Park</strong><span class="where">Waterfront</span><p>The best view of the Manhattan skyline, especially at sunset.</p></li>
+      <li><strong>MoMA PS1</strong><span class="where">Court Square</span><p>Contemporary art in an old public school.</p></li>
+      <li><strong>Noguchi Museum</strong><span class="where">Near the river</span><p>A calm garden and sculpture museum, worth the walk.</p></li>
+      <li><strong>Dutch Kills</strong><span class="where">Near the hotel</span><p>Serious cocktails, a few blocks from BORO.</p></li>
+      <li><strong><span class="tbd">Your favorite LIC restaurant</span></strong><p><span class="tbd">Why you love it.</span></p></li>
+    </ul>
+
+    <h3 class="group-title">Greenpoint, our neighborhood</h3>
+    <ul class="places">
+      <li><strong>Transmitter Park</strong><span class="where">Waterfront</span><p>A small pier with a big view.</p></li>
+      <li><strong><span class="tbd">Our go-to dinner spot</span></strong><p><span class="tbd">What to order.</span></p></li>
+      <li><strong><span class="tbd">Our coffee place</span></strong><p><span class="tbd">A line about it.</span></p></li>
+      <li><strong><span class="tbd">Where we'd take you for a drink</span></strong><p><span class="tbd">A line about it.</span></p></li>
+    </ul>
+    <p style="margin-top:1.25rem"><span class="lines"><span class="line g">G</span></span> The G train connects Long Island City (Court Sq) and Greenpoint directly.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Questions</h2>
+  <div class="body">
+    <details><summary>What should I wear?</summary><p><span class="tbd">Dress code to come.</span> Early October in New York is usually mild, somewhere in the 60s, and cooler once the sun goes down.</p></details>
+    <details><summary>Are kids welcome?</summary><p><span class="tbd">Your answer here.</span></p></details>
+    <details><summary>Can I bring a plus-one?</summary><p>Your invitation will list everyone who's invited. If you have questions, just reach out to us.</p></details>
+    <details><summary>I have a dietary restriction.</summary><p>Let us know when you RSVP. With this much food, we'll make sure there's plenty for you.</p></details>
+    <details><summary>Who do I contact with questions?</summary><p><span class="tbd">Email or phone number.</span></p></details>
+  </div>
+</section>
+
+<section id="rsvp" class="rsvp">
+  <h2>RSVP</h2>
+  <div class="body">
+    <p class="lede">Formal invitations will follow. Please RSVP by <span class="tbd">RSVP deadline</span>.</p>
+    <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
+    <a class="btn quiet" data-link="registry" href="#rsvp">View our registry</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span class="sig">Jackie &amp; Larkin</span>
+  October 2, 2027 · Long Island City · jackie-larkin.com
+</footer>
+
+<script>
+/* ---- Fill these in when the links exist. Empty links show as "opens soon". ---- */
+const LINKS = {
+  rsvp: "",       // Zola or Withjoy RSVP link
+  registry: "",   // Zola registry link
+  roomBlock: ""   // BORO room block booking link
+};
+const SOON = { rsvp: "RSVP opens soon", registry: "Registry coming soon", roomBlock: "Booking link coming soon" };
+
+document.querySelectorAll("[data-link]").forEach(a => {
+  const key = a.dataset.link, url = LINKS[key];
+  if (url) {
+    a.href = url; a.target = "_blank"; a.rel = "noopener";
+  } else if (!a.closest("nav") && !a.closest(".hero-actions")) {
+    a.textContent = SOON[key];
+    a.setAttribute("aria-disabled", "true");
+  }
+});
+</script>
+</body>
+</html>
