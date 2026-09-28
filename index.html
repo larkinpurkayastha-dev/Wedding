@@ -246,6 +246,13 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 .map-note{color:var(--muted); font-size:.95rem; margin:.75rem 0 0}
 
 .band{height:30px; background:url("band.svg") repeat-x left center / auto 30px}
+
+.addresses{display:grid; gap:1rem}
+.address{align-items:flex-start}
+.address .role{display:block; color:var(--oxblood); font-size:.9rem; margin-bottom:.15rem}
+.address span:not(.role){display:block}
+.maps{display:flex; flex-wrap:wrap; gap:.5rem}
+.k.star-church{background:#6E2A6E; clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 </style>
 </head>
 <body>
@@ -267,9 +274,9 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
   <h1 class="names">Jackie<span class="amp">&amp;</span>Larkin</h1>
   <dl class="hero-meta">
     <div><dt>When</dt><dd>Saturday, October 2, 2027</dd></div>
-    <div><dt>Where</dt><dd>BORO Hotel<br>Long Island City, Queens</dd></div>
-    <div><dt>Bring</dt><dd>An appetite</dd></div>
-  </dl>
+    <div><dt>Ceremony</dt><dd>St. Anthony of Padua<br>Greenpoint, Brooklyn</dd></div>
+    <div><dt>Reception</dt><dd>BORO Hotel<br>Long Island City, Queens</dd></div>
+      </dl>
   <div class="hero-actions">
     <a class="btn" data-link="rsvp" href="#rsvp">RSVP</a>
     <a class="btn quiet" data-link="roomBlock" href="#stay">Book a room</a>
@@ -281,7 +288,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 <section id="weekend">
   <div class="head"><h2>The weekend</h2><p class="intro">Three days, one very good dinner.</p></div>
   <div class="body">
-    <p class="lede">We're getting married at the BORO Hotel in Long Island City, one stop from Midtown. Everything on Saturday happens under one roof.</p>
+    <p class="lede">We're getting married at St. Anthony of Padua in Greenpoint, our neighborhood, then celebrating at the BORO Hotel in Long Island City.</p>
     <ol class="days">
       <li><span class="dot"></span>
         <div class="when">Friday, October 1</div>
@@ -289,9 +296,11 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
         <p><span class="tbd">Time and place to come.</span> Casual and optional, a chance to say hi before the big day.</p>
       </li>
       <li><span class="dot"></span>
-        <div class="when">Saturday, October 2 · BORO Hotel</div>
+        <div class="when">Saturday, October 2</div>
         <h3>Ceremony &amp; celebration</h3>
-        <p>Ceremony at <span class="tbd">time TBD</span>, then dinner and dancing into the night.</p>
+        <p><strong>Ceremony</strong> at <span class="tbd">time TBD</span>, St. Anthony of Padua Church, 862 Manhattan Avenue, Greenpoint.</p>
+        <p><strong>Reception</strong> to follow at the BORO Hotel, 38-28 27th Street, Long Island City: dinner and dancing into the night.</p>
+        <p><span class="tbd">How guests get from the ceremony to the reception.</span></p>
         <div class="feature">
           <strong>About dinner</strong>
           <ul>
@@ -322,11 +331,17 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 </section>
 
 <section id="getting-here">
-  <div class="head"><h2>Getting here</h2><p class="intro">Closer to Midtown than most of Brooklyn.</p></div>
+  <div class="head"><h2>Getting here</h2><p class="intro">Two neighborhoods, one short ride apart.</p></div>
   <div class="body">
-    <div class="address">
-      <div><strong>BORO Hotel</strong><span>38-28 27th Street, Long Island City, NY 11101</span></div>
-      <a class="btn quiet" href="https://maps.google.com/?q=BORO+Hotel+38-28+27th+Street+Long+Island+City+NY" target="_blank" rel="noopener">Open in Maps</a>
+    <div class="addresses">
+      <div class="address">
+        <div><span class="role">Ceremony</span><strong>St. Anthony of Padua Church</strong><span>862 Manhattan Avenue, Brooklyn, NY 11222</span><span>At Milton Street in Greenpoint, a block from the Greenpoint Av G stop</span></div>
+        <div class="maps"><a class="btn quiet" href="https://maps.apple/p/LuL-sT3zzc90Ku" target="_blank" rel="noopener">Apple Maps</a><a class="btn quiet" href="https://www.google.com/maps/search/?api=1&amp;query=862+Manhattan+Ave,+Brooklyn,+NY+11222" target="_blank" rel="noopener">Google Maps</a></div>
+      </div>
+      <div class="address">
+        <div><span class="role">Reception</span><strong>BORO Hotel</strong><span>38-28 27th Street, Long Island City, NY 11101</span><span>A few minutes' walk from the 39 Av N/W stop</span></div>
+        <div class="maps"><a class="btn quiet" href="https://maps.google.com/?q=BORO+Hotel+38-28+27th+Street+Long+Island+City+NY" target="_blank" rel="noopener">Google Maps</a></div>
+      </div>
     </div>
     <figure class="map-wrap">
       <svg class="nyc-map" viewBox="0 0 760 585" role="img" aria-label="Map showing the BORO Hotel in Long Island City, LaGuardia Airport, and nearby Manhattan and Brooklyn landmarks" font-family="Albert Sans, Helvetica Neue, Arial, sans-serif">
@@ -347,19 +362,20 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
 <circle cx="182.4" cy="250.8" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="168.4" y="240.8" font-size="17" fill="#4A1622" text-anchor="end" font-weight="400">Times Square</text>
 <circle cx="187.0" cy="287.6" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="187.0" y="313.6" font-size="17" fill="#4A1622" text-anchor="middle" font-weight="400">Empire State Building</text>
 <text transform="rotate(-60 268.1 104.8)" x="268.1" y="109.8" font-size="15" fill="#3F6B4A" text-anchor="middle" font-weight="400">Central Park</text>
-<circle cx="333.6" cy="390.1" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="345.6" y="395.1" font-size="17" fill="#4A1622" text-anchor="start" font-weight="400">Greenpoint (our neighborhood)</text>
+<polygon points="321.7,375.8 326.0,386.0 337.0,386.9 328.6,394.0 331.1,404.8 321.7,399.0 312.3,404.8 314.9,394.0 306.5,386.9 317.5,386.0" fill="#6E2A6E" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><text x="341.7" y="389.8" font-size="18" fill="#6E2A6E" text-anchor="start" font-weight="600">St. Anthony of Padua</text><text x="341.7" y="408.8" font-size="15" fill="#7A4A55" text-anchor="start" font-weight="400">The ceremony · Greenpoint</text>
 <circle cx="139.8" cy="523.3" r="6" fill="#6E2A6E" stroke="#fff" stroke-width="2"/><text x="151.8" y="528.3" font-size="17" fill="#4A1622" text-anchor="start" font-weight="400">Brooklyn Bridge</text>
 <text x="424.9" y="254.5" font-size="13" fill="#7A4A55" text-anchor="start" font-weight="400">39 Av</text>
 <polygon points="390.1,233.4 394.9,244.8 407.3,245.8 397.8,253.9 400.7,265.9 390.1,259.5 379.6,265.9 382.4,253.9 373.0,245.8 385.4,244.8" fill="#A3243A" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
 <text x="412.1" y="281.4" font-size="19" fill="#A3243A" text-anchor="start" font-weight="600">BORO Hotel</text>
-<text x="412.1" y="301.4" font-size="15" fill="#7A4A55" text-anchor="start" font-weight="400">The wedding</text>
+<text x="412.1" y="301.4" font-size="15" fill="#7A4A55" text-anchor="start" font-weight="400">The reception</text>
 <polygon points="658.7,112.7 662.9,122.9 673.9,123.8 665.5,131.0 668.1,141.7 658.7,135.9 649.3,141.7 651.8,131.0 643.4,123.8 654.4,122.9" fill="#E0662A" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
 <text x="658.7" y="104.7" font-size="18" fill="#9A4214" text-anchor="middle" font-weight="600">LaGuardia (LGA)</text>
 <text x="744.0" y="567.0" font-size="14" fill="#7A4A55" text-anchor="end" font-weight="400">JFK: about 35–60 min by car</text>
 <text x="16.0" y="567.0" font-size="14" fill="#7A4A55" text-anchor="start" font-weight="400">Newark (EWR) is west, across the Hudson</text>
 </svg>
       <figcaption>
-        <span><i class="k star-boro"></i>BORO Hotel, the wedding</span>
+        <span><i class="k star-church"></i>St. Anthony of Padua, the ceremony</span>
+        <span><i class="k star-boro"></i>BORO Hotel, the reception</span>
         <span><i class="k star-lga"></i>LaGuardia, 15–20 min by car or rideshare</span>
         <span><i class="k spot"></i>Landmarks for reference</span>
         <span><i class="k ln" style="background:#E8B500"></i>N / W</span>
@@ -367,7 +383,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
         <span><i class="k ln" style="background:#6CBE45"></i>G</span>
       </figcaption>
     </figure>
-    <p class="small map-note">Times Square is about 15 minutes away on the N or W; Greenpoint is a short ride on the G.</p>
+    <p class="small map-note">The church and the hotel are a short drive apart, or linked by the G to Court Sq. Times Square is about 15 minutes from BORO on the N or W.</p>
     <div class="ways">
       <div>
         <h3><span class="lines"><span class="line nw">N</span><span class="line nw">W</span></span>Subway</h3>
@@ -403,7 +419,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
       <h3>BORO Hotel room block</h3>
       <p>We've reserved rooms at the venue for our guests.</p>
       <ul class="perks">
-        <li>Walk from your room to the ceremony, dinner, and dance floor</li>
+        <li>Walk from your room to the reception, dinner, and dance floor</li>
         <li>No late-night cab home after the party</li>
         <li>Book by <span class="tbd">cutoff date</span>; rooms are limited</li>
       </ul>
@@ -448,6 +464,7 @@ footer .sig{font-family:var(--serif); font-size:1.6rem; color:var(--river); disp
     <details><summary>Are kids welcome?</summary><p><span class="tbd">Your answer here.</span></p></details>
     <details><summary>Can I bring a plus-one?</summary><p>Your invitation will list everyone who's invited. If you have questions, just reach out to us.</p></details>
     <details><summary>I have a dietary restriction.</summary><p>Let us know when you RSVP. With this much food, we'll make sure there's plenty for you.</p></details>
+    <details><summary>How do I get from the ceremony to the reception?</summary><p><span class="tbd">Details to come.</span> It's a short drive from Greenpoint to Long Island City.</p></details>
     <details><summary>How do I get home after the party?</summary><p>If you're in the room block, you're already home. Otherwise, the N and W at 39 Av–Dutch Kills are a short walk, and cabs and rideshares are easy to find in LIC.</p></details>
     <details><summary>Is there a registry?</summary><p>Your presence is the gift. If you'd like to give something, our registry is linked in the RSVP section below.</p></details>
     <details><summary>Who do I contact with questions?</summary><p><span class="tbd">Email address.</span></p></details>
